@@ -1,7 +1,10 @@
 import './App.css';
+import Header from './components/Header';
+import QuestForm from './components/QuestForm';
+import QuestList from './components/QuestList';
 
 /*
-Bring in initial state of todos
+Bring in initial state of quests todos
 
 
 */
@@ -9,7 +12,9 @@ Bring in initial state of todos
 function App() {
   return (
     <div className='app'>
-      <h1>Build A Quest Todo</h1>
+      <Header />
+      <QuestForm />
+      <QuestList />
     </div>
   );
 }
