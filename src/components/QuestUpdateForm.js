@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const QuestUpdateForm = ({ updateTodo, onTodoUpdate }) => {
+const QuestUpdateForm = ({ updateTodo, onSaveTodo }) => {
   const [newTitle, setNewTitle] = useState('');
   const handleChange = (e) => {
     setNewTitle(e.target.value);
@@ -13,18 +13,14 @@ const QuestUpdateForm = ({ updateTodo, onTodoUpdate }) => {
       title: newTitle,
     };
 
-    onTodoUpdate(newTodo);
+    onSaveTodo(newTodo);
     setNewTitle('');
   };
 
   return (
-    <li className='quest'>
-      <form onSubmit={handleSubmit}>
-        <input
-          type='checkbox'
-          checked={completed}
-          onChange={handleToggleTodo}
-        />
+    <li className='quest quest-update'>
+      <form onSubmit={handleSubmit} className='quest-update-form'>
+        <input type='checkbox' defaultChecked={updateTodo.completed} />
         <input
           type='text'
           value={updateTodo.title}

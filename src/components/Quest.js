@@ -1,4 +1,4 @@
-const Quest = ({ todo, onTodoUpdate, onTodoDelete, onTodoToggle }) => {
+const Quest = ({ todo, onEditTodo, onTodoDelete, onTodoToggle }) => {
   const { id, title, completed } = todo;
   const handleToggleTodo = () => {
     onTodoToggle(id);
@@ -10,7 +10,7 @@ const Quest = ({ todo, onTodoUpdate, onTodoDelete, onTodoToggle }) => {
   };
 
   const handleUpdateTodo = () => {
-    onTodoUpdate(todo);
+    onEditTodo(todo);
   };
 
   return (

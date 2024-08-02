@@ -1,14 +1,17 @@
 import Quest from './Quest';
+import QuestUpdateForm from './QuestUpdateForm';
 
 const QuestList = ({
   quests,
   todos,
-  onTodoUpdate,
+  onSaveTodo,
+  onEditTodo,
+  editTodoView,
   onTodoDelete,
   onTodoToggle,
   updateTodo,
 }) => {
-  console.log('in QuestList -> todos:', todos);
+  console.log('in QuestList -> todos:', todos, updateTodo);
   return (
     <div className='quest-list-container'>
       <h3>QuestList or Todos</h3>
@@ -16,19 +19,16 @@ const QuestList = ({
         {todos && todos.length > 0
           ? todos.map((t) => (
               <Quest
-                key={t.dataIssued}
+                key={t.title}
                 todo={t}
-                onTodoUpdate={onTodoUpdate}
+                onEditTodo={onEditTodo}
                 onTodoDelete={onTodoDelete}
                 onTodoToggle={onTodoToggle}
               />
             ))
           : null}
-        {updateTodo !== undefined ? (
-          <QuestUpdateForm
-            onTodoUpdate={onTodoUpdate}
-            updateTodo={updateTodo}
-          />
+        {updateTodo && editTodoView ? (
+          <QuestUpdateForm onSaveTodo={onSaveTodo} updateTodo={updateTodo} />
         ) : null}
       </ul>
     </div>

@@ -7,21 +7,25 @@ export default function (state, action) {
   switch (type) {
     case 'GET_TODOS': {
       return {
+        updateTodo: {},
         todos: payload,
       };
     }
     case 'ADD_TODO': {
       return {
+        updateTodo: {},
         todos: [payload, ...todos],
       };
     }
     case 'DELETE_TODO': {
       return {
+        updateTodo: {},
         todos: todos.filter((todo) => todo.id !== payload),
       };
     }
     case 'UPDATE_TODO_COMPLETED': {
       return {
+        updateTodo: {},
         todos: todos.map((todo) =>
           todo.id === payload
             ? {
@@ -38,6 +42,19 @@ export default function (state, action) {
           ...payload,
         },
         todos: todos,
+      };
+    }
+    case 'SAVE_TODO': {
+      return {
+        updateTodo: {},
+        todos: todos.map((todo) =>
+          todo.id === payload.id
+            ? {
+                ...todo,
+                title: payload.title,
+              }
+            : todo
+        ),
       };
     }
     default: {

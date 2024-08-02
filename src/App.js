@@ -52,9 +52,14 @@ function App() {
     dispatch({ type: 'DELETE_TODO', payload: id });
   };
 
-  const handleUpdateTodo = (todo) => {
-    // setEditTodoView(!editTodoView);
-    dispatch({ type: 'UPDATE_TODO', payload: todo });
+  const handleSaveTodo = (todo) => {
+    dispatch({ type: 'SAVE_TODO', payload: todo });
+    setEditTodoView(false);
+  };
+
+  const handleEditTodo = (todo) => {
+    setEditTodoView(true);
+    dispatch({ type: 'SET_TODO_TO_UPDATE', payload: todo });
   };
 
   const handleToggleTodo = (id) => {
@@ -68,7 +73,9 @@ function App() {
       <QuestForm onFormSubmit={handleAddTodo} />
       <QuestList
         todos={state.todos}
-        onTodoUpdate={handleUpdateTodo}
+        onEditTodo={handleEditTodo}
+        editTodoView={editTodoView}
+        onSaveTodo={handleSaveTodo}
         onTodoDelete={handleDeleteTodo}
         onTodoToggle={handleToggleTodo}
         updateTodo={state.updateTodo}
