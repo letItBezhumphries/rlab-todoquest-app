@@ -11,6 +11,7 @@ Bring in initial state of quests todos
 
 */
 import initialState from './data';
+import { faker } from '@faker-js/faker';
 
 const getTodos = async () => {
   try {
@@ -37,28 +38,29 @@ function App() {
   // }, []);
 
   const handleAddTodo = (todo) => {
-    dispatch({ type: 'ADD_TODO', payload: todo });
+    dispatch({
+      type: 'ADD_TODO',
+      payload: {
+        id: faker.string.uuid().split('-').join(''),
+        ...todo,
+        dateIssued: Date.now(),
+      },
+    });
   };
 
-  const handleDeleteTodo = (todo) => {
-    dispatch({ type: 'DELETE_TODO', payload: todo });
+  const handleDeleteTodo = (id) => {
+    dispatch({ type: 'DELETE_TODO', payload: id });
   };
 
   const handleUpdateTodo = (todo) => {
-    setEditTodoView(!editTodoView);
+    // setEditTodoView(!editTodoView);
     dispatch({ type: 'UPDATE_TODO', payload: todo });
   };
-  // useEffect(() => {
-  //   getTodos()
-  //     .then((res) => {
-  //       if (res.length) {
-  //         setTodos(res);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log('err:', err);
-  //     });
-  // }, []);
+
+  const handleToggleTodo = (id) => {
+    dispatch({ type: 'UPDATE_TODO_COMPLETED', payload: id });
+  };
+
   console.log('todos:', state.todos);
   return (
     <div className='app'>
@@ -68,6 +70,7 @@ function App() {
         todos={state.todos}
         onTodoUpdate={handleUpdateTodo}
         onTodoDelete={handleDeleteTodo}
+        onTodoToggle={handleToggleTodo}
       />
     </div>
   );

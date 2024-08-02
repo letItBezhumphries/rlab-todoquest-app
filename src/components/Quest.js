@@ -1,9 +1,18 @@
-const Quest = ({ todo }) => {
+const Quest = ({ todo, onTodoUpdate, onTodoDelete, onTodoToggle }) => {
+  const { id, title, completed } = todo;
   const handleToggleTodo = () => {
-    // onTodoToggle()
+    onTodoToggle(id);
   };
 
-  const { id, title, completed, dateIssued } = todo;
+  const handleDeleteTodo = () => {
+    console.log('id:', id);
+    onTodoDelete(id);
+  };
+
+  const handleUpdateTodo = () => {
+    onTodoUpdate(todo);
+  };
+
   return (
     <li className='quest'>
       <div>
@@ -20,8 +29,14 @@ const Quest = ({ todo }) => {
         </span>
       </div>
       <div>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={handleUpdateTodo}>Edit</button>
+        <button
+          onClick={handleDeleteTodo}
+          className={completed ? 'delete-btn' : 'delete-btn-disabled'}
+          disabled={!completed}
+        >
+          Delete
+        </button>
       </div>
     </li>
   );
