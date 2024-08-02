@@ -1,8 +1,15 @@
-const QuestList = ({ quests }) => {
+import Quest from './Quest';
+
+const QuestList = ({ quests, todos }) => {
+  console.log('in QuestList -> todos:', todos);
   return (
     <div className='quest-list-container'>
       <h3>QuestList</h3>
-      <ul></ul>
+      <ul>
+        {todos && todos.length > 0
+          ? todos.map((t) => <Quest key={t.id} todo={t} />)
+          : null}
+      </ul>
     </div>
   );
 };
