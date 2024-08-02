@@ -6,6 +6,7 @@ const QuestList = ({
   onTodoUpdate,
   onTodoDelete,
   onTodoToggle,
+  updateTodo,
 }) => {
   console.log('in QuestList -> todos:', todos);
   return (
@@ -23,6 +24,12 @@ const QuestList = ({
               />
             ))
           : null}
+        {updateTodo !== undefined ? (
+          <QuestUpdateForm
+            onTodoUpdate={onTodoUpdate}
+            updateTodo={updateTodo}
+          />
+        ) : null}
       </ul>
     </div>
   );

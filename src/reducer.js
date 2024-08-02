@@ -32,25 +32,13 @@ export default function (state, action) {
         ),
       };
     }
-    case 'UPDATE_TODO': {
-      if (payload === 0) {
-        return {
-          todos: todos.slice(1),
-          updateTodo: todos[0],
-        };
-      } else if (payload === todos.length - 1) {
-        return {
-          todos: todos.slice(0, todos.length - 1),
-          updateTodo: todos[todos.length - 1],
-        };
-      } else {
-        const beforeTodo = todos.slice(0, payload - 1);
-        const afterTodo = todos.slice(payload + 1);
-        return {
-          todos: [...beforeTodo, todos[payload], ...afterTodo],
-          updateTodo: todos[payload],
-        };
-      }
+    case 'SET_TODO_TO_UPDATE': {
+      return {
+        updateTodo: {
+          ...payload,
+        },
+        todos: todos,
+      };
     }
     default: {
       throw Error('Unkown Action', type);

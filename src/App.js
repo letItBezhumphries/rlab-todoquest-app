@@ -71,6 +71,7 @@ function App() {
         onTodoUpdate={handleUpdateTodo}
         onTodoDelete={handleDeleteTodo}
         onTodoToggle={handleToggleTodo}
+        updateTodo={state.updateTodo}
       />
     </div>
   );
