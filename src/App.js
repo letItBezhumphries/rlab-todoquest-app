@@ -29,12 +29,12 @@ const getTodos = async () => {
 
 function App() {
   const [editTodoView, setEditTodoView] = useState(false);
-  const [todos, dispatch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer(reducer, initialState);
   // const todos = getTodos();
 
-  useEffect(() => {
-    dispatch({ type: 'GET_TODOS', payload: initialState });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({ type: 'GET_TODOS', payload: initialState });
+  // }, []);
 
   const handleAddTodo = (todo) => {
     dispatch({ type: 'ADD_TODO', payload: todo });
@@ -59,13 +59,13 @@ function App() {
   //       console.log('err:', err);
   //     });
   // }, []);
-  console.log('todos:', todos);
+  console.log('todos:', state.todos);
   return (
     <div className='app'>
       <Header />
       <QuestForm onFormSubmit={handleAddTodo} />
       <QuestList
-        todos={todos.todos}
+        todos={state.todos}
         onTodoUpdate={handleUpdateTodo}
         onTodoDelete={handleDeleteTodo}
       />

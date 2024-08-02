@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const QuestForm = ({ onFormSubmit, editTodoView, todoToUpdate }) => {
+const QuestForm = ({ onFormSubmit, editTodoView }) => {
   const [todoTitle, setTodoTitle] = useState('');
 
-  useEffect(() => {
-    if (editTodoView) {
-      setTodoTitle(todoToUpdate.title);
-    }
-  }, [editTodoView]);
+  // useEffect(() => {
+  //   if (editTodoView) {
+  //     setTodoTitle(todoToUpdate.title);
+  //   }
+  // }, [editTodoView]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +19,8 @@ const QuestForm = ({ onFormSubmit, editTodoView, todoToUpdate }) => {
     };
 
     onFormSubmit(newTodo);
+
+    setTodoTitle('');
   };
 
   const handleChange = (e) => {
@@ -27,7 +29,8 @@ const QuestForm = ({ onFormSubmit, editTodoView, todoToUpdate }) => {
 
   return (
     <form
-      className={editTodoView ? 'quest-add-form' : 'edit-form'}
+      className='quest-add-form'
+      // className={editTodoView ? 'quest-add-form' : 'edit-form'}
       onSubmit={handleSubmit}
     >
       {!editTodoView ? (
@@ -38,14 +41,11 @@ const QuestForm = ({ onFormSubmit, editTodoView, todoToUpdate }) => {
           type='text'
           value={todoTitle}
           onChange={handleChange}
-          placeholder={editTodoView ? todoToUpdate : '...Add an adventure'}
+          // placeholder={editTodoView ? todoToUpdate : '...Add an adventure'}
+          placeholder='...Add an adventure'
           name='title'
         />
-      </div>
-      <div className='buttons-container'>
-        <button onClick={handleSubmit} disabled={!completed}>
-          Add
-        </button>
+        <button onClick={handleSubmit}>Add</button>
       </div>
     </form>
   );
