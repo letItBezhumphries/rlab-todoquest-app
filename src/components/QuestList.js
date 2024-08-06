@@ -6,7 +6,7 @@ const QuestList = ({
   todos,
   onSaveTodo,
   onEditTodo,
-  editTodoView,
+  // editTodoView,
   onTodoDelete,
   onTodoToggle,
   updateTodo,
@@ -24,12 +24,14 @@ const QuestList = ({
                 onEditTodo={onEditTodo}
                 onTodoDelete={onTodoDelete}
                 onTodoToggle={onTodoToggle}
+                onSaveTodo={onSaveTodo}
+                updateTodo={updateTodo}
               />
             ))
           : null}
-        {updateTodo && editTodoView ? (
+        {/* {updateTodo && editTodoView ? (
           <QuestUpdateForm onSaveTodo={onSaveTodo} updateTodo={updateTodo} />
-        ) : null}
+        ) : null} */}
       </ul>
     </div>
   );

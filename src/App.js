@@ -29,7 +29,7 @@ const getTodos = async () => {
 };
 
 function App() {
-  const [editTodoView, setEditTodoView] = useState(false);
+  // const [editTodoView, setEditTodoView] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   // const todos = getTodos();
 
@@ -54,11 +54,11 @@ function App() {
 
   const handleSaveTodo = (todo) => {
     dispatch({ type: 'SAVE_TODO', payload: todo });
-    setEditTodoView(false);
+    // setEditTodoView(false);
   };
 
   const handleEditTodo = (todo) => {
-    setEditTodoView(true);
+    // setEditTodoView(true);
     dispatch({ type: 'SET_TODO_TO_UPDATE', payload: todo });
   };
 
@@ -74,7 +74,6 @@ function App() {
       <QuestList
         todos={state.todos}
         onEditTodo={handleEditTodo}
-        editTodoView={editTodoView}
         onSaveTodo={handleSaveTodo}
         onTodoDelete={handleDeleteTodo}
         onTodoToggle={handleToggleTodo}

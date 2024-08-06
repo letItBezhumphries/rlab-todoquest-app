@@ -1,7 +1,12 @@
 import { useState } from 'react';
 
-const QuestUpdateForm = ({ updateTodo, onSaveTodo }) => {
-  const [newTitle, setNewTitle] = useState('');
+const QuestUpdateForm = ({
+  updateTodo,
+  onSaveTodo,
+  handleCloseEditTodoView,
+}) => {
+  const [newTitle, setNewTitle] = useState(updateTodo.title);
+
   const handleChange = (e) => {
     setNewTitle(e.target.value);
   };
@@ -14,7 +19,8 @@ const QuestUpdateForm = ({ updateTodo, onSaveTodo }) => {
     };
 
     onSaveTodo(newTodo);
-    setNewTitle('');
+    // close the editTodoView
+    handleCloseEditTodoView();
   };
 
   return (
@@ -23,7 +29,7 @@ const QuestUpdateForm = ({ updateTodo, onSaveTodo }) => {
         <input type='checkbox' defaultChecked={updateTodo.completed} />
         <input
           type='text'
-          value={updateTodo.title}
+          value={newTitle}
           onChange={handleChange}
           name='title'
         />
