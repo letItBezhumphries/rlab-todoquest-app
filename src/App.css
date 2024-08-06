@@ -163,33 +163,17 @@ h3 {
   margin-right: 40px;
 }
 
-/* .quest button {
-  background-color: var(--cool-gray);
-  width: 150px;
-  border: 0.8px solid var(--burnt-sienna);
-  font-size: 16px;
-  letter-spacing: 1.5px;
-  color: #fff;
-} */
-
 .quest button:first-of-type {
   height: 90%;
   width: 50%;
   margin-right: 30px;
   padding: 0 0;
   background-color: var(--magenta-pantone);
-  /* width: 150px; */
   border: 0.8px solid var(--burnt-sienna);
   font-size: 16px;
   letter-spacing: 1.5px;
   color: #fff;
 }
-
-/* .quest button:last-of-type {
-  height: 100%;
-  margin: 0 0;
-  padding: 0 0;
-} */
 
 .quest-completed {
   text-decoration: line-through;
@@ -203,7 +187,7 @@ h3 {
   height: 90%;
   margin: 0 0;
   padding: 0 0;
-  /* background-color: var(--cool-gray); */
+
   width: 150px;
   border: 0.8px solid var(--burnt-sienna);
   font-size: 16px;
