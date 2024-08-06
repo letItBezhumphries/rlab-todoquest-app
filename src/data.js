@@ -33,7 +33,7 @@ const initialState = {
     {
       userId: 1,
       id: 5,
-      title: 'Remove Tatoo from butt',
+      title: 'Remove Tatoo from back',
       completed: false,
       dateIssued: faker.date.past(),
     },
