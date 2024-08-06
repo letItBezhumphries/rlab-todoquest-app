@@ -1,6 +1,6 @@
 export default function (state, action) {
   // destructure action & state
-  const { todos } = state;
+  const { todos, updateTodo } = state;
   const { type, payload } = action;
   //
   console.log('state:', state);
@@ -58,7 +58,11 @@ export default function (state, action) {
       };
     }
     default: {
-      throw Error('Unkown Action', type);
+      // throw Error('Unkown Action', type);
+      return {
+        todos,
+        updateTodo,
+      };
     }
   }
 }
